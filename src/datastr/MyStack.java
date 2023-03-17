@@ -9,9 +9,17 @@ public class MyStack<T> {
 		length = 0;
 	}
 	
-	//public boolean isFull() {
+	public boolean isFull() {
+		try {
+			MyNodeS<T> newNode = new MyNodeS<T>(null);
+		}
+		catch (OutOfMemoryError e){
+			return true;
+		}
+	
+		return false;
 		
-	//}
+	}
 	
 	public boolean isEmpty() {
 		if(length == 0) {
