@@ -17,6 +17,9 @@ public class mainService {
 			MyStack<Student> studentStack = new MyStack<>();
 			MyStack<String> emptyStack = new MyStack<>();
 			
+			System.out.println("MyStack");
+			System.out.println();
+			
 			//Number
 			System.out.println("------Number------");
 			System.out.println("Push:");
@@ -129,6 +132,7 @@ public class mainService {
 				lineCounter++;
 			}
 		}
+		br.close();
 	}
 
 }

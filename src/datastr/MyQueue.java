@@ -71,6 +71,7 @@ public class MyQueue<T> {
 				System.out.print(tempNode + " ");
 				tempNode = (MyNodeQ) tempNode.getNext();
 			}
+			System.out.println();
 		}
 		
 	}
