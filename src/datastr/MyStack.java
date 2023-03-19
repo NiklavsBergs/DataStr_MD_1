@@ -18,7 +18,6 @@ public class MyStack<T> {
 		}
 	
 		return false;
-		
 	}
 	
 	public boolean isEmpty() {
@@ -42,7 +41,6 @@ public class MyStack<T> {
 		}
 		else {
 			MyNodeS<T> newNode = new MyNodeS<T>(newElement);
-			topNode.setPrevious(newNode);
 			newNode.setNext(topNode);
 			topNode = newNode;
 			length++;
@@ -55,7 +53,6 @@ public class MyStack<T> {
 		}
 		else {
 			topNode = topNode.getNext();
-			topNode.getPrevious().setPrevious(null);
 			length--;
 		}
 	}

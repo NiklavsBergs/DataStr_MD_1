@@ -1,3 +1,4 @@
+//MyStack testing
 package service;
 
 import java.io.BufferedReader;
@@ -61,6 +62,10 @@ public class mainService {
 			studentStack.pop();
 			studentStack.print();
 			System.out.println();
+			System.out.println();
+			
+			System.out.println("Top:");
+			System.out.println(studentStack.top());
 			System.out.println();
 			
 			//Syntax check

@@ -3,7 +3,6 @@ package datastr;
 public class MyNodeS<T> {
 	private T element;
 	private MyNodeS next = null;
-	private MyNodeS previous = null;
 	
 	public MyNodeS (T inputElement) {
 		setElement(inputElement);
@@ -28,14 +27,6 @@ public class MyNodeS<T> {
 
 	public void setNext(MyNodeS next) {
 		this.next = next;
-	}
-
-	public MyNodeS getPrevious() {
-		return previous;
-	}
-
-	public void setPrevious(MyNodeS previous) {
-		this.previous = previous;
 	}
 	
 	public String toString() {
