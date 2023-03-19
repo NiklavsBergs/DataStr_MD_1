@@ -87,4 +87,10 @@ public class MyStack<T> {
 			length = 0;
 		}
 	}
+
+	public int getLength() {
+		return length;
+	}
+	
+	
 }
