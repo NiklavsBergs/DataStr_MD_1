@@ -43,8 +43,8 @@ public class mainService {
 			System.out.println();
 			
 			System.out.println("IsEmpty:");
-			System.out.println(numberStack.isEmpty());
-			System.out.println(emptyStack.isEmpty());
+			System.out.println("numberStack is empty: " + numberStack.isEmpty());
+			System.out.println("emptyStack is empty: " + emptyStack.isEmpty());
 			System.out.println();
 			
 			//Student
@@ -88,7 +88,6 @@ public class mainService {
 		
 		int charValue = 0;
 		int lineCounter = 1;
-		int possibleError = 0;
 		
 		System.out.println("Checking syntax on " + fails);
 		
@@ -112,7 +111,6 @@ public class mainService {
 				}
 				else if(charValue == 41 && characterStack.top().intValue() == 40) {
 					characterStack.pop();
-					possibleError = 0;
 				}
 				else if(charValue == 125 && characterStack.top().intValue() == 123) {
 					characterStack.pop();
