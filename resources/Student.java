@@ -79,7 +79,7 @@ public class Student implements Comparable<Student>{
 	@Override
 	public int compareTo(Student o) {
 		double student1AVGGrade = this.calculateAVGgrade();
-		double student2AVGGrade = o.calculateAVGgrade();
+		double student2AVGGrade = o.calculateAVGgrade);
 		if(student1AVGGrade > student2AVGGrade)
 			return 1;
 		else if (student1AVGGrade < student2AVGGrade)

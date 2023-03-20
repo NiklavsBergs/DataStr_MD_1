@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-import datastr.Faculty;
 import datastr.MyStack;
 import datastr.Student;
 
@@ -13,7 +12,7 @@ public class mainService {
 
 	public static void main(String[] args) {
 		try {
-			MyStack<Number> numberStack = new MyStack<>();
+			MyStack<Integer> numberStack = new MyStack<>();
 			MyStack<Student> studentStack = new MyStack<>();
 			MyStack<String> emptyStack = new MyStack<>();
 			
@@ -92,8 +91,8 @@ public class mainService {
 		FileReader fr = new FileReader (f);
 		BufferedReader br = new BufferedReader(fr);
 		
-		MyStack<Number> characterStack = new MyStack<>();
-		MyStack<Number> lineNumStack = new MyStack<>();
+		MyStack<Integer> characterStack = new MyStack<>();
+		MyStack<Integer> lineNumStack = new MyStack<>();
 		
 		int charValue = 0;
 		int lineCounter = 1;

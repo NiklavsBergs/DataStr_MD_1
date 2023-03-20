@@ -109,6 +109,15 @@ public class MyDeque<T> {
 			length = 0;
 		}
 	}
+
+	public MyNodeD getFrontNode() {
+		return frontNode;
+	}
+
+	public MyNodeD getRearNode() {
+		return rearNode;
+	}
+	
 	
 	
 }

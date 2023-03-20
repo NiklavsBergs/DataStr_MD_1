@@ -2,6 +2,8 @@
 //Deque goes from left(front) to right(rear) in console
 package service;
 
+import java.util.Scanner;
+
 import datastr.MyDeque;
 import datastr.Student;
 
@@ -66,12 +68,42 @@ public class mainService3 {
 			System.out.println();
 			System.out.println();
 			
+			System.out.println("" + studentDeque.getFrontNode());
+			browserHistory();
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
+	
 	}
 
+	public static void browserHistory() throws Exception {
+		MyDeque<String> historyDeque = new MyDeque<>();
+		String link = "";
+		
+		Scanner myObj = new Scanner(System.in);
+	    System.out.println("Enter a link:");
+	    link = myObj.nextLine();
+	    if(link.equals("1") != true) {
+	    	historyDeque.enqueueAtFront(link);
+	    }
+	    
+	    while(link != "") {
+	    	System.out.println("Enter a link:");
+	    	link = myObj.nextLine();
+	    	if (link.equals("1")) {
+	    		System.out.println("" + historyDeque.getFrontNode());
+	    		historyDeque.dequeueFromFront();
+	    	}
+	    	else {
+	    		if(historyDeque.getLength() >= 10) {
+	    			historyDeque.dequeueFromEnd();
+	    		}
+		    	historyDeque.enqueueAtFront(link);
+		  
+		    }
+	    }
+	    historyDeque.print();
+	    
+	}
 }
