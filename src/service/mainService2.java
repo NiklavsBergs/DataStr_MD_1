@@ -40,9 +40,9 @@ public class mainService2 {
 			System.out.println("Enqueue:");
 			studentQueue.enqueue(new Student());
 			studentQueue.print();
-			studentQueue.enqueue(new Student("Janis", "Ozolins", Faculty.ITF, "123456-65433"));
+			studentQueue.enqueue(new Student("Janis", "Ozolins"));
 			studentQueue.print();
-			studentQueue.enqueue(new Student("Olafs", "Zvaigzne", Faculty.TSF, "123457-65432"));
+			studentQueue.enqueue(new Student("Olafs", "Lielais"));
 			studentQueue.print();
 			System.out.println();
 			System.out.println();

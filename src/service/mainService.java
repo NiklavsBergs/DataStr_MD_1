@@ -55,8 +55,8 @@ public class mainService {
 			System.out.println("------STUDENT------");
 			System.out.println("Push:");
 			studentStack.push(new Student());
-			studentStack.push(new Student("Janis", "Ozolins", Faculty.ITF, "123456-65433"));
-			studentStack.push(new Student("Olafs", "Zvaigzne", Faculty.TSF, "123457-65432"));
+			studentStack.push(new Student("Janis", "Ozolins"));
+			studentStack.push(new Student("Olafs", "Vēde"));
 			studentStack.print();
 			System.out.println();
 			System.out.println();
@@ -87,50 +87,110 @@ public class mainService {
 
 	}
 	
-	public static void checkSyntax(String fails) throws Exception {
-		File f = new File(fails);
+	public static void checkSyntax(String fileName) throws Exception {
+		File f = new File(fileName);
 		FileReader fr = new FileReader (f);
 		BufferedReader br = new BufferedReader(fr);
 		
 		MyStack<Number> characterStack = new MyStack<>();
+		MyStack<Number> lineNumStack = new MyStack<>();
 		
 		int charValue = 0;
 		int lineCounter = 1;
 		
-		System.out.println("Checking syntax on " + fails);
+		boolean stringCheck = false;
+		boolean charCheck = false;
+		boolean specCharCheck = false;
+		boolean errorCheck = false;
+		
+		System.out.println("Checking syntax on " + fileName);
 		
 		while ((charValue = br.read()) != -1) {
 			
-			if (charValue == 40 || charValue == 123) {
-			
-				//Checks if {} is not in ()
-				if(characterStack.getLength() !=0) {
-					if(charValue == 123 && characterStack.top().intValue() == 40) {
-						System.out.println("Syntax error at or before line " + lineCounter);
-						break;
-					}
+			//String and Character detection
+			if (stringCheck) {
+				if (charValue == 92) {
+					specCharCheck = true;
+					continue;
 				}
-				characterStack.push(charValue);
+				else if ((specCharCheck) && (charValue == 34)) {
+					specCharCheck = false;
+					continue;
+				}
+				else if (charValue == 34) {
+					stringCheck = false;
+					continue;
+				}
+				else {
+					continue;
+				}
 			}
-			else if (charValue == 41 || charValue == 125) {
+			
+			else if (charCheck) {
+				if (charValue == 92) {
+					specCharCheck = true;
+					continue;
+				}
+				else if ((specCharCheck) && (charValue == 39)) {
+					specCharCheck = false;
+					continue;
+				}
+				else if (charValue == 39) {
+					charCheck = false;
+					continue;
+				}
+			}
+			
+			else if (charValue == 34) {
+				stringCheck = true;
+				continue;
+			}
+			
+			else if (charValue == 39) {
+				charCheck = true;
+				continue;
+			}
+			
+			//Bracket check
+			else if (charValue == 40 || charValue == 91 || charValue == 123) {
+				characterStack.push(charValue);
+				lineNumStack.push(lineCounter);
+			}
+			
+			else if (charValue == 41 || charValue == 93 || charValue == 125) {
 				if(characterStack.isEmpty()) {
-					System.out.println("Syntax error at or before line " + lineCounter);
+					System.out.println("Syntax error at line " + lineCounter);
+					errorCheck = true;
 					break;
 				}
 				else if(charValue == 41 && characterStack.top().intValue() == 40) {
 					characterStack.pop();
+					lineNumStack.pop();
+				}
+				else if(charValue == 93 && characterStack.top().intValue() == 91) {
+					characterStack.pop();
+					lineNumStack.pop();
 				}
 				else if(charValue == 125 && characterStack.top().intValue() == 123) {
 					characterStack.pop();
+					lineNumStack.pop();
 				}
 				else {
-					System.out.println("Syntax error at or before line " + lineCounter);
+					System.out.println("Syntax error: Brackets at line " + lineNumStack.top() + " and " + lineCounter + " don't match.");
+					errorCheck = true;
 					break;
 				}
 			}
 			else if (charValue == 10) {
 				lineCounter++;
 			}
+		}
+		
+		if (characterStack.isEmpty() && errorCheck == false) {
+			System.out.println("No errors found! :)");
+		}
+		else if (errorCheck == false){
+			System.out.println("Syntax error at line " + lineNumStack.top());
 		}
 		br.close();
 	}

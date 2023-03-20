@@ -23,7 +23,7 @@ public class MyQueue<T> {
 	}
 	
 	public boolean isEmpty() {
-		return(frontNode == null);
+		return(length == 0);
 	}
 
 	public int getLength() {
@@ -77,7 +77,7 @@ public class MyQueue<T> {
 	}
 	
 	public void makeEmpty() throws Exception {
-		if(length ==0) {
+		if(length == 0) {
 			throw (new Exception ("Queue is already empty"));
 		}
 		else {
