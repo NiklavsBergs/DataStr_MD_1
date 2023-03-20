@@ -57,6 +57,7 @@ public class MyQueue<T> {
 		}
 		else {
 			frontNode = (MyNodeQ) frontNode.getNext();
+			frontNode.setNext(null);
 			length--;
 		}
 	}
