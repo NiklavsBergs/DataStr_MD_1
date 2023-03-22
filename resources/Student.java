@@ -2,7 +2,7 @@ package model;
 
 import java.util.Arrays;
 
-public class Student implements Comparable<Student>{
+public class Student implements ComparableStudent<>{
 	
     private int ID;
     private String name;

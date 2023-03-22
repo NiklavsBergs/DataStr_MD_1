@@ -64,7 +64,12 @@ public class MyDeque<T> {
 	
 	public void dequeueFromFront() throws Exception {
 		if(length == 0) {
-			throw (new Exception ("Queue already empty"));
+			throw (new Exception ("Deque already empty"));
+		}
+		else if (length == 1) {
+			frontNode = null;
+			rearNode = null;
+			length--;
 		}
 		else {
 			frontNode = frontNode.getPrev();
@@ -75,7 +80,12 @@ public class MyDeque<T> {
 	
 	public void dequeueFromEnd() throws Exception {
 		if(length == 0) {
-			throw (new Exception ("Queue already empty"));
+			throw (new Exception ("Deque already empty"));
+		}
+		else if (length == 1) {
+			frontNode = null;
+			rearNode = null;
+			length--;
 		}
 		else {
 			rearNode = (MyNodeD) rearNode.getNext();
@@ -86,7 +96,7 @@ public class MyDeque<T> {
 	
 	public void print() throws Exception {
 		if(length == 0) {
-			throw (new Exception ("Queue is empty"));
+			throw (new Exception ("Deque is empty"));
 		}
 		else {
 			MyNodeD<T> tempNode = frontNode;
@@ -101,7 +111,7 @@ public class MyDeque<T> {
 	
 	public void makeEmpty() throws Exception {
 		if(length == 0) {
-			throw (new Exception ("Queue is already empty"));
+			throw (new Exception ("Deque is already empty"));
 		}
 		else {
 			frontNode = null;

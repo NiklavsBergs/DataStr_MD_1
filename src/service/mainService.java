@@ -55,7 +55,7 @@ public class mainService {
 			System.out.println("Push:");
 			studentStack.push(new Student());
 			studentStack.push(new Student("Janis", "Ozolins"));
-			studentStack.push(new Student("Olafs", "Vēde"));
+			studentStack.push(new Student("Olafs", "Lielais"));
 			studentStack.print();
 			System.out.println();
 			System.out.println();
@@ -106,7 +106,7 @@ public class mainService {
 		
 		while ((charValue = br.read()) != -1) {
 			
-			//String and Character detection
+			//String and Character detection " ", ' '
 			if (stringCheck) {
 				if (charValue == 92) {
 					specCharCheck = true;
@@ -150,19 +150,23 @@ public class mainService {
 				continue;
 			}
 			
-			//Bracket check
-			else if (charValue == 40 || charValue == 91 || charValue == 123) {
+			//Bracket check (), {}, [], <>
+			else if (charValue == 40 || charValue == 91 || charValue == 123 || charValue == 60) {
 				characterStack.push(charValue);
 				lineNumStack.push(lineCounter);
 			}
 			
-			else if (charValue == 41 || charValue == 93 || charValue == 125) {
+			else if (charValue == 41 || charValue == 93 || charValue == 125 || charValue == 62) {
 				if(characterStack.isEmpty()) {
 					System.out.println("Syntax error at line " + lineCounter);
 					errorCheck = true;
 					break;
 				}
 				else if(charValue == 41 && characterStack.top().intValue() == 40) {
+					characterStack.pop();
+					lineNumStack.pop();
+				}
+				else if(charValue == 62 && characterStack.top().intValue() == 60) {
 					characterStack.pop();
 					lineNumStack.pop();
 				}

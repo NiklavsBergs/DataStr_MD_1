@@ -76,34 +76,59 @@ public class mainService3 {
 		}
 	
 	}
+	
+	
+	//To exit browserHistory() function, when asked for a link don't enter anything and press enter
 
 	public static void browserHistory() throws Exception {
 		MyDeque<String> historyDeque = new MyDeque<>();
 		String link = "";
 		
 		Scanner myObj = new Scanner(System.in);
+		
 	    System.out.println("Enter a link:");
 	    link = myObj.nextLine();
-	    if(link.equals("1") != true) {
-	    	historyDeque.enqueueAtFront(link);
-	    }
 	    
 	    while(link != "") {
-	    	System.out.println("Enter a link:");
-	    	link = myObj.nextLine();
+	    	
 	    	if (link.equals("1")) {
+	    		
+	    		if (historyDeque.isEmpty()) {
+	    			System.out.println("Browse History is empty");
+	    			
+	    			System.out.println("Enter a link:");
+	    	    	link = myObj.nextLine();
+	    	    	
+	    			continue;
+	    		}
+	    		
 	    		System.out.println("" + historyDeque.getFrontNode());
 	    		historyDeque.dequeueFromFront();
+	    		
 	    	}
+	    	
 	    	else {
-	    		if(historyDeque.getLength() >= 10) {
-	    			historyDeque.dequeueFromEnd();
+	    		
+	    		if(link!=null && link.matches("^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$")) {
+	    			
+	    			if(historyDeque.getLength() >= 10) {
+	    				System.out.println("Removed last link");
+		    			historyDeque.dequeueFromEnd();
+		    		}
+	    			
+			    	historyDeque.enqueueAtFront(link);
 	    		}
-		    	historyDeque.enqueueAtFront(link);
-		  
+	    		
+	    		else {
+	    			System.out.println("Not a valid link");
+	    		}
 		    }
+	    	
+	    	System.out.println("Enter a link:");
+	    	link = myObj.nextLine();
+	    	
 	    }
 	    historyDeque.print();
-	    
+	    myObj.close();
 	}
 }

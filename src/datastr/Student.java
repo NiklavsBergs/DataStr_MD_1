@@ -24,7 +24,7 @@ public class Student{
 		return id;
 	}
 	
-	public void setId() {
+	private void setId() {
 		id = idCounter;
 		idCounter++;
 	}
@@ -34,7 +34,12 @@ public class Student{
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if(name!=null && name.matches("[A-ZĒŪĪĻĶĢŠĀČŅŽ]{1}[a-zēūīļķģšāčņž]+[ ]?([A-ZĒŪĪĻĶĢŠĀČŅŽ]{1}[a-zēūīļķģšāčņž]+)?")) {
+			this.name = name;
+		}
+		else {
+			this.name = "Unknown";
+		}
 	}
 
 	public String getSurname() {
@@ -42,7 +47,12 @@ public class Student{
 	}
 
 	public void setSurname(String surname) {
-		this.surname = surname;
+		if(surname!=null && surname.matches("[A-ZĒŪĪĻĶĢŠĀČŅŽ]{1}[a-zēūīļķģšāčņž]+[-]?([A-ZĒŪĪĻĶĢŠĀČŅŽ]{1}[a-zēūīļķģšāčņž]+)?")) {
+			this.surname = surname;
+		}
+		else {
+			this.surname = "Unknown";
+		}
 	}
 
 	
