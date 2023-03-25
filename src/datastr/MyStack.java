@@ -34,16 +34,18 @@ public class MyStack<T> {
 	}
 	
 	public void push(T newElement) {
-		if(length == 0) {
-			MyNodeS<T> newNode = new MyNodeS<T>(newElement);
-			topNode = newNode;
-			length++;
-		}
-		else {
-			MyNodeS<T> newNode = new MyNodeS<T>(newElement);
-			newNode.setNext(topNode);
-			topNode = newNode;
-			length++;
+		if(newElement != null) {
+			if(length == 0) {
+				MyNodeS<T> newNode = new MyNodeS<T>(newElement);
+				topNode = newNode;
+				length++;
+			}
+			else {
+				MyNodeS<T> newNode = new MyNodeS<T>(newElement);
+				newNode.setNext(topNode);
+				topNode = newNode;
+				length++;
+			}
 		}
 	}
 	

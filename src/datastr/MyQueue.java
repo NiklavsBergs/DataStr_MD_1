@@ -31,23 +31,25 @@ public class MyQueue<T> {
 	}
 	
 	public void enqueue(T newElement) {
-		if(length == 0) {
-			MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
-			frontNode = newNode;
-			rearNode = newNode;
-			length++;
-		}
-		else if (length == 1){
-			MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
-			frontNode.setNext(newNode);
-			rearNode = newNode;
-			length++;
-		}
-		else {
-			MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
-			rearNode.setNext(newNode);
-			rearNode = newNode;
-			length++;
+		if(newElement != null) {
+			if(length == 0) {
+				MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
+				frontNode = newNode;
+				rearNode = newNode;
+				length++;
+			}
+			else if (length == 1){
+				MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
+				frontNode.setNext(newNode);
+				rearNode = newNode;
+				length++;
+			}
+			else {
+				MyNodeQ<T> newNode = new MyNodeQ<T>(newElement);
+				rearNode.setNext(newNode);
+				rearNode = newNode;
+				length++;
+			}
 		}
 	}
 	
